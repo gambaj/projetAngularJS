@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="notesInteractives">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tableau de Post-it</title>
+        <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="lib/bootstrap/dist/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet"/>
+    </head>
+
+    <body>
+        <div ng-controller="pageController" data-ng-init="initialisation()">
+            <div ng-controller="formulaireController" class="row" id="page">
+                <div id="divTableau" class="col-xs-8"></div>
+
+                <div id="divMenu" class="col-xs-4">
+
+                    <br />
+                    <div id="session" ng-controller="connexionController">
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-3">Session</label>
+                            <div class="col-xs-5">
+                                <input type="text" class="form-control" id="textInputSession" placeholder="Connexion..." ng-model="name"  autofocus/>
+                            </div>
+                            <div id="connexion" class="col-xs-3 form-group">
+                                <button class="btn btn-default" id="buttonConnexion" ng-click="connexion()">Connexion</button>
+                            </div>
+                        </div>
+                        <br /><br /><br />
+                    </div>
+
+                    <div id="formulaire">
+
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-offset-4 col-xs-7">Ajouter une note</label><br /><br />
+                            <label class="col-xs-3">Titre</label>
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" id="textInputTitle" placeholder="Maison,Travail,liste de course,examens,..."/>
+                            </div>
+                        </div><br /><br />
+
+                        <div class="form-group col-xs-12">
+                            <label for="dtp_input1" class="col-xs-3 control-label">Échéance</label>
+                            <div class="input-group date datetime col-xs-7" data-link-field="dtp_input1">
+                                <input class="form-control" id="textInputDate" size="16" type="text" value="" readonly>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                            <input type="hidden" id="dtp_input1" value="" /><br/>
+                        </div><br /><br />
+
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-3">Contenu</label>
+                            <div class="col-xs-8">
+                                <textarea rows="5" class="form-control" id="textInputText" placeholder="Tapez votre note..."></textarea>
+                            </div>
+
+                        </div><br /><br />
+
+                        <div class="form-group" id="validation">
+                            <button id="valider" class="btn btn-primary col-xs-offset-1" ng-click="envoyerNoteCobra()">Valider</button>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div id="impression">
+                        <div class="form-group">
+                            <div id='diagImage' style='display:none;'>
+                                <a id='imgLink' download="diagram.png" href=""></a>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-xs-12">
+                            <label class="col-xs-3">Suppression</label>
+                            <div class="col-xs-5">
+                                <input type="text" class="form-control" id="textInputNote" placeholder="Titre de note"/>
+                            </div>
+                            <div id="suppression" class="col-xs-3 form-group">
+                                <button class="btn btn-default" id="buttonSuppression" ng-click="supprimerNoteCobra()">Suppression</button>
+                            </div>
+                        </div>
+
+                        <div id="myOverviewDiv" class="overview col-xs-offset-1 col-xs-4"></div>
+                        <button class="btn btn-info col-xs-offset-1" id="buttonImpression" ng-click="genererImage()">Enregistrer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Les libraries -->
+        <script src="lib/angular.js"></script>
+        <script src="lib/bootstrap/dist/js/jquery-2.1.4.min.js"></script>
+        <script src="lib/gojs/go-debug.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="lib/bootstrap/dist/js/bootstrap-datetimepicker.fr.js"></script>
+        <script src="lib/cobra/socket.io.js"></script>
+        <script src="lib/cobra/cobra.js"></script>
+        <script src="lib/notify.js"></script>
+
+        <!-- L'application -->
+        <script src="js/notesInteractives.js"></script>
+
+        <!-- Les controleurs -->
+        <script src="js/controllers/pageController.js"></script>
+        <script src="js/controllers/connexionController.js"></script>
+        <script src="js/controllers/formulaireController.js"></script>
+
+        <!-- Les services -->
+        <script src="js/services/note.js"></script>
+
+        <!-- Les dépendances -->
+        <script src="js/dependencies/noteGojs.js"></script>
+        <script src="js/controllers/newCobra.js"></script>
+    </body>
+</html>

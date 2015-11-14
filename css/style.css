@@ -1,0 +1,31 @@
+#divTableau {
+    background-color:#DAE4E4;
+    border: 1px solid black;
+}
+
+#divMenu {
+    background-color:#DDDDDD;
+    border: 1px solid black;
+    padding: 0px;
+    overflow: auto;
+}
+
+#formulaire {
+    border-top : 2px solid black;
+    padding-top: 20px;
+    border-bottom : 2px solid black;
+    padding-bottom: 20px;
+}
+
+#page {
+    width : 100%;
+}
+
+#myOverviewDiv {
+    Border:solid 2px black;
+    height: 130px;
+}
+
+textarea{
+    resize:none;
+}
